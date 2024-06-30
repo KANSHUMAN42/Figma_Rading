@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Figma Plugin</title>
+</head>
+<body>
+  <h1>Figma Frame Components</h1>
+  <ul id="components-list"></ul>
+  <button id="generate-document">Generate Document</button>
+  <script src="ui.js"></script>
+</body>
+</html>
+
+
+
+
+<!-- <h1>Frame Creator</h1>
+<p> page:<input id ='page' value ="home"></p>
+<p>Topic <input id ='Topic' value ="PRODUCT"></p>
+<p>description<input id ='DESC' value ="This the about our company that is doing well."></p>
+<button id='create'> create</button>
+<button id = 'cancel'>cancel</button>
+<script>
+  document.getElementById('create').onclick= ()=>{
+    const page = document.getElementById('page').value;
+    const topic = document.getElementById('Topic').value;
+    const desc= document.getElementById('DESC').value;
+    conole.log("clicked")
+    parent.postMessage({PluginMessage: {type:'create', page:page, topic:topic, desc:desc}},'*')
+
+  }
+
+  document.getElementById('cancel').onclick=() =>{
+    parent.postMessage({PluginMessage: {type:'cancel'}},'*')
+  }
+</script> -->

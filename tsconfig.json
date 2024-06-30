@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": ["es6","dom"],
+    "strict": true,
+    "outDir": "./dist",
+    "module": "commonjs",
+    "typeRoots": [
+      "./node_modules/@types",
+      "./node_modules/@figma",
+      "./node_modules/@file-saver",
+      "./node_mdules/@docx"
+    ]
+  }
+}
