@@ -1,8 +1,8 @@
 // figma.showUI(__html__);
 
-figma.showUI(__html__, { width: 400, height: 600 });
+figma.showUI(__html__);
 
-figma.ui.onmessage = async (msg) => {
+figma.ui.onmessage =  (msg) => {
   if (msg.type === 'fetch-components') {
     const nodes = figma.currentPage.selection;
     const components: any[] = [];

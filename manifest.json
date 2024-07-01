@@ -1,19 +1,20 @@
 {
- 
   "name": "temp-fig",
   "id": "1388434811304872846",
   "api": "1.0.0",
-  "main": "code.js",
-  "capabilities": [],
-  "enableProposedApi": false,
-  "documentAccess": "dynamic-page",
-  "editorType": [
-    "figma"
+  "main": "src/code.ts",   
+  "ui": "src/ui.html",      
+  "editorType": ["figma"],  
+  "relaunchButtons": [
+    {
+      "command": "open",   
+      "name": "Open Figma Component Exporter",
+      "multipleSelection": true
+    }
   ],
-  "ui": "dist/ui.html",
   "networkAccess": {
-    "allowedDomains": [
-      "none"
-    ]
+    "allowedDomains": ["*"], 
+    "reasoning": "Required to save documents using file-saver.js"
   }
 }
+  

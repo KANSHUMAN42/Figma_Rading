@@ -1,4 +1,4 @@
-import * as saveAs from 'file-saver';
+import  {saveAs} from 'file-saver';
 import { Document, Packer, Paragraph, TextRun } from 'docx';
 
 window.onmessage = (event) => {

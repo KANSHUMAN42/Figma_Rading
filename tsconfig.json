@@ -1,14 +1,19 @@
 {
   "compilerOptions": {
     "target": "es6",
-    "lib": ["es6","dom"],
+    "lib": ["es6","DOM"],
     "strict": true,
     "outDir": "./dist",
     "module": "commonjs",
+    "moduleDetection": "auto",
+    "esModuleInterop": true,
+    "moduleResolution": "Node",
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
     "typeRoots": [
       "./node_modules/@types",
       "./node_modules/@figma",
-      "./node_modules/@file-saver",
+      "./node_modules/@file_saver",
       "./node_mdules/@docx"
     ]
   }

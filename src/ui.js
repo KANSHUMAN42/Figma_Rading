@@ -1,9 +1,11 @@
-import { saveAs } from 'file-saver';
+import {saveAs} from 'file-saver';
 import { Document, Packer, Paragraph, TextRun } from 'docx';
 window.onmessage = (event) => {
     const { type, data } = event.data.pluginMessage;
     if (type === 'fetch-components') {
         const componentsList = document.getElementById('components-list');
+        if (!componentsList)
+            return; // Check if element exists
         componentsList.innerHTML = '';
         data.forEach((component) => {
             const listItem = document.createElement('li');
@@ -14,21 +16,26 @@ window.onmessage = (event) => {
 };
 document.getElementById('generate-document').onclick = () => {
     parent.postMessage({ pluginMessage: { type: 'fetch-components' } }, '*');
-    const components = Array.from(document.getElementById('components-list').children);
-    const doc = new Document();
-    const paragraphs = components.map(component => {
-        var _a;
-        return new Paragraph({
-            children: [
-                new TextRun({ text: component.querySelector('h2').textContent, bold: true }),
-                new TextRun({ text: `\n${component.querySelector('p:nth-of-type(1)').textContent}` }),
-                new TextRun({ text: ((_a = component.querySelector('p:nth-of-type(2)')) === null || _a === void 0 ? void 0 : _a.textContent) ? `\n${component.querySelector('p:nth-of-type(2)').textContent}` : '' }),
-            ],
-        });
-    });
-    
-    doc.addSection({
-        children: paragraphs,
+    const componentsList = document.getElementById('components-list');
+    if (!componentsList)
+        return; // Check if element exists
+    const components = Array.from(componentsList.children);
+    const doc = new Document({
+        sections: [
+            {
+                properties: {},
+                children: components.map(component => {
+                    var _a;
+                    return new Paragraph({
+                        children: [
+                            new TextRun({ text: component.querySelector('h2').textContent, bold: true }),
+                            new TextRun({ text: `\n${component.querySelector('p:nth-of-type(1)').textContent}` }),
+                            new TextRun({ text: ((_a = component.querySelector('p:nth-of-type(2)')) === null || _a === void 0 ? void 0 : _a.textContent) ? `\n${component.querySelector('p:nth-of-type(2)').textContent}` : '' }),
+                        ],
+                    });
+                })
+            }
+        ]
     });
     Packer.toBlob(doc).then(blob => {
         saveAs(blob, 'figma_components.docx');
